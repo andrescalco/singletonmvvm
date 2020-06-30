@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.andrescalco.singletonmvvm.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/userImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background"
+            app:imageFromUrl="@{viewModel.user.image}"
+            />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="user name goes here"
+            android:text="@{viewModel.user.username}"
+            app:layout_constraintLeft_toRightOf="@id/userImage"
+            app:layout_constraintTop_toTopOf="@id/userImage"
+            app:layout_constraintBottom_toBottomOf="@id/userEmail"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:id="@+id/userEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="user email@provider.com goes here"
+            android:text="@{viewModel.user.email}"
+            app:layout_constraintLeft_toLeftOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userName"
+            android:paddingTop="4dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
